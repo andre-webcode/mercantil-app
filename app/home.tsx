@@ -1,5 +1,7 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Search, ShoppingCart } from 'lucide-react-native';
+import { products } from '../data/products';
+import { Product } from '../components/Product/Product';
 
 
 const Home = () => {
@@ -9,10 +11,17 @@ const Home = () => {
             <View style={styles.header}>
                 <Text style={styles.title}>Mercantil</Text>
 
-                <ShoppingCart
-                    size={28}
-                    color="#2E7D32"
-                />
+                <View style={styles.cart}>
+                    <ShoppingCart
+                        size={28}
+                        color="#2E7D32"
+                    />
+
+                    <View style={styles.badge}>
+                        <Text style={styles.badgeText}>2</Text>
+                    </View>
+                </View>
+
             </View>
 
 
@@ -30,9 +39,18 @@ const Home = () => {
                 <TextInput
                     placeholder='Buscar produtos...'
                     style={styles.search}
-                   
+
                 />
             </View>
+
+            <FlatList
+                data={products}
+                keyExtractor={(item)=> item.id.toString()}
+                renderItem={({item})=>(
+                    <Product product={item} />
+                )}
+
+            />
         </View>
     );
 };
@@ -73,10 +91,10 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 10,
         paddingHorizontal: 0,
-        
+
 
     },
-    searchContainer:{
+    searchContainer: {
         marginTop: 25,
         height: 50,
         borderWidth: 1,
@@ -86,6 +104,26 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 15,
 
+    },
+    cart:{
+        position: 'relative', 
+    },
+    badge: {
+        position: 'absolute',
+        top: -6,
+        right: -6,
+        backgroundColor: 'red',
+        width: 18,
+        height: 18,
+        borderRadius: 9,
+        alignItems: 'center',
+        justifyContent: 'center',
+      
+    },
+    badgeText: {
+        color: '#FFFFFF',
+        fontSize: 11,
+        fontWeight: 'bold',
     }
 });
 
