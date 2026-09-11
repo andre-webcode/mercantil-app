@@ -1,13 +1,20 @@
 import { FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Search, ShoppingCart } from 'lucide-react-native';
 import { products } from '../../data/products';
-import { Product } from '../../components/Product/Product';
-import { Banner } from '../../components/Banner/Banner';
 import { categories } from '../../data/categories';
 import { Category } from '../../components/Category/Category';
+import { useState } from 'react';
+import { Banner } from '../../components/Banner/Banner';
 
 
 const Home = () => {
+    const [search, setSearch] = useState('');
+
+    const produtosFiltrados = products.filter((product) => (
+        product.name.toLowerCase().includes(search.toLowerCase())
+    ))
+
+
     return (
         <ScrollView style={styles.container}>
 
@@ -43,6 +50,8 @@ const Home = () => {
                     <TextInput
                         placeholder='Buscar produtos...'
                         style={styles.search}
+                        value={search}
+                        onChangeText={setSearch}
 
                     />
                 </View>

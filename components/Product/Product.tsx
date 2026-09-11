@@ -21,13 +21,15 @@ export const Product = ({ product }: ProductProps) => {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 15,
+        flex:1,
+        padding: 10,
         backgroundColor: '#ffffff',
         borderWidth: 1,
         borderColor: '#E8F5E9',
         borderRadius: 10,
         marginBottom: 10,
-        marginTop: 20
+        marginTop: 20,
+        margin:5
     },
     name: {
         fontSize: 18,

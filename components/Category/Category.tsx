@@ -1,4 +1,5 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { router } from 'expo-router';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 type CategoryProps = {
   category: {
@@ -9,17 +10,28 @@ type CategoryProps = {
 };
 
 export const Category = ({ category }: CategoryProps) => {
-  return (
-    <View style={styles.container}>
-      <Image
-        source={category.image}
-        style={styles.image}
-      />
 
-      <Text style={styles.name}>
-        {category.name}
-      </Text>
-    </View>
+  const handlePress = () => {
+    router.push(`/category?category=${category.name}`)
+  }
+
+
+
+  return (
+    <Pressable
+    onPress={handlePress}
+     style={styles.container}>
+      
+        <Image
+          source={category.image}
+          style={styles.image}
+        />
+
+        <Text style={styles.name}>
+          {category.name}
+        </Text>
+     
+    </Pressable>
   );
 };
 
