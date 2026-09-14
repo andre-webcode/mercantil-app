@@ -7,17 +7,17 @@ export const categories = [
     {
       id: 2,
       name: 'Alimentos',
-      image: require('../assets/bebida.jpg'),
+      image: require('../assets/feijaopreto.jpg'),
     },
     {
       id: 3,
       name: 'Limpeza',
-      image: require('../assets/bebida.jpg'),
+      image: require('../assets/veja1.jpg'),
     },
     {
       id: 4,
       name: 'Higiene',
-      image: require('../assets/bebida.jpg'),
+      image: require('../assets/colgate.jpg'),
     },
     {
       id: 5,

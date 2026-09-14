@@ -1,5 +1,5 @@
-import { useLocalSearchParams } from "expo-router";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { router, useLocalSearchParams } from "expo-router";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { products } from "../data/products";
 import { Product } from "../components/Product/Product";
 
@@ -10,8 +10,18 @@ const Category = () => {
         (product) => product.category === category
     )
 
+    const handleBack = () => {
+        router.back();
+    }
+
     return (
         <View>
+            <Text style={styles.title}>{category}</Text>
+
+            <Pressable onPress={handleBack} style={styles.backButton}>
+                <Text style={styles.backText}>← Voltar</Text>
+            </Pressable>
+
             <Text style={styles.title}>{category}</Text>
 
             <FlatList
@@ -32,10 +42,20 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#2E7D32',
         marginBottom: 10,
-        alignItems:'center',
-        textAlign:'center',
-        marginTop:10
+        alignItems: 'center',
+        textAlign: 'center',
+        marginTop: 10
     },
+    backButton: {
+        marginBottom: 15,
+        marginLeft:10
+      },
+      
+      backText: {
+        fontSize: 16,
+        color: '#2E7D32',
+        fontWeight: 'bold',
+      },
 })
 
 

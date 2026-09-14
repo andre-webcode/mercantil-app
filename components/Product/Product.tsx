@@ -32,23 +32,26 @@ const styles = StyleSheet.create({
         margin:5
     },
     name: {
-        fontSize: 18,
+        fontSize: 17,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color: '#222222',
+        marginTop:5
     },
     price: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 8,
+        color:'#2e7d32',
+        marginTop: 6,
     },
     category: {
-        fontSize: 14,
-        color: '#666666',
-        marginTop: 4,
+        fontSize: 13,
+        color: '#777777',
+        marginTop: 3,
     },
     imageContainer: {
         backgroundColor: '#F5F5F5',
-        height: 150,
+        width:'100%',
+        height: 130,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 8,
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#2E7D32',
         paddingVertical: 10,
         borderRadius: 8,
-        marginTop: 10,
+        marginTop: 12,
         alignItems: 'center',
     },
     buttonText: {
