@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native"
+import { Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { ProductType } from '../../types/product-type';
 
 type ProductProps = {
@@ -7,7 +7,14 @@ type ProductProps = {
 export const Product = ({ product }: ProductProps) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.imageContainer}>FOTO</Text>
+            
+            <View style={styles.imageContainer}>
+                <Image
+                    source={product.image}
+                    style={styles.image}
+                />
+            </View>
+
             <Text style={styles.name}>{product.name}</Text>
             <Text style={styles.price}>R$ {product.price}</Text>
             <Text style={styles.category}>{product.category}</Text>
@@ -68,5 +75,10 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight: 'bold',
         fontSize: 15,
+    },
+    image:{
+        width:100,
+        height:100,
+        resizeMode:'contain',
     }
 })

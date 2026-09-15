@@ -15,8 +15,7 @@ const Category = () => {
     }
 
     return (
-        <View>
-            <Text style={styles.title}>{category}</Text>
+        <View style={{flex:1}}>
 
             <Pressable onPress={handleBack} style={styles.backButton}>
                 <Text style={styles.backText}>← Voltar</Text>
@@ -47,6 +46,7 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     backButton: {
+        marginTop:10,
         marginBottom: 15,
         marginLeft:10
       },
