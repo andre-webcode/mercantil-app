@@ -1,13 +1,21 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { ProductType } from '../../types/product-type';
+import { useCartStore } from "../../store/cart-store";
 
 type ProductProps = {
     product: ProductType;
 };
 export const Product = ({ product }: ProductProps) => {
+    const addToCart = useCartStore((state) => state.addToCart);
+
+    const handleAddToCart = () => {
+        console.log('Produto adicionado:', product);
+        addToCart(product);
+    }
+
     return (
         <View style={styles.container}>
-            
+
             <View style={styles.imageContainer}>
                 <Image
                     source={product.image}
@@ -19,7 +27,10 @@ export const Product = ({ product }: ProductProps) => {
             <Text style={styles.price}>R$ {product.price}</Text>
             <Text style={styles.category}>{product.category}</Text>
 
-            <Pressable style={styles.button}>
+            <Pressable
+                onPress={handleAddToCart}
+                style={styles.button}
+            >
                 <Text style={styles.buttonText}>Adicionar</Text>
             </Pressable>
         </View>
@@ -28,7 +39,7 @@ export const Product = ({ product }: ProductProps) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
         padding: 10,
         backgroundColor: '#ffffff',
         borderWidth: 1,
@@ -36,18 +47,18 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 10,
         marginTop: 20,
-        margin:5
+        margin: 5
     },
     name: {
         fontSize: 17,
         fontWeight: 'bold',
         color: '#222222',
-        marginTop:5
+        marginTop: 5
     },
     price: {
         fontSize: 16,
         fontWeight: 'bold',
-        color:'#2e7d32',
+        color: '#2e7d32',
         marginTop: 6,
     },
     category: {
@@ -57,7 +68,7 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         backgroundColor: '#F5F5F5',
-        width:'100%',
+        width: '100%',
         height: 130,
         alignItems: 'center',
         justifyContent: 'center',
@@ -76,9 +87,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 15,
     },
-    image:{
-        width:100,
-        height:100,
-        resizeMode:'contain',
+    image: {
+        width: 100,
+        height: 100,
+        resizeMode: 'contain',
     }
 })

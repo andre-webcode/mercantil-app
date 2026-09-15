@@ -1,11 +1,12 @@
 import { router } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useCartStore } from "../../store/cart-store";
 
 export default function Cart() {
-
+    const cart = useCartStore((state) => state.cart);
 
     const handleBack = () => {
-        router.back();
+        router.push('/home');
     }
 
     return (
@@ -24,7 +25,7 @@ export default function Cart() {
             </Text>
 
             <Text style={styles.empty}>
-                Seu carrinho está vazio
+                Produtos no carrinho: {cart.length}
             </Text>
         </View>
     )
