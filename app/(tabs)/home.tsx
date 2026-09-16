@@ -23,17 +23,6 @@ const Home = () => {
             <View style={styles.header}>
                 <Text style={styles.title}>Mercantil</Text>
 
-                <View style={styles.cart}>
-                    <ShoppingCart
-                        size={28}
-                        color="#2E7D32"
-                    />
-
-                    <View style={styles.badge}>
-                        <Text style={styles.badgeText}>{cart.length}</Text>
-                    </View>
-                </View>
-
             </View>
 
 
