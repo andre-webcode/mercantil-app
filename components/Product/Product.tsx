@@ -1,16 +1,23 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { ProductType } from '../../types/product-type';
 import { useCartStore } from "../../store/cart-store";
+import { useState } from "react";
 
 type ProductProps = {
     product: ProductType;
 };
 export const Product = ({ product }: ProductProps) => {
+    const [adicionado, setAdicionado] = useState(false);
+
     const addToCart = useCartStore((state) => state.addToCart);
 
     const handleAddToCart = () => {
-        console.log('Produto adicionado:', product);
         addToCart(product);
+        setAdicionado(true);
+
+        setTimeout(() => {
+            setAdicionado(false);
+        }, 2000);
     }
 
     return (
@@ -29,9 +36,11 @@ export const Product = ({ product }: ProductProps) => {
 
             <Pressable
                 onPress={handleAddToCart}
-                style={styles.button}
+                style={[styles.button, adicionado && styles.buttonAdded]}
             >
-                <Text style={styles.buttonText}>Adicionar</Text>
+                <Text style={styles.buttonText}>
+                    {adicionado ? '✓ Adicionado' : 'Adicionar'}
+                </Text>
             </Pressable>
         </View>
     )
@@ -91,5 +100,8 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         resizeMode: 'contain',
+    },
+    buttonAdded: {
+        backgroundColor: '#66bb6a'
     }
 })

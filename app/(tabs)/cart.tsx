@@ -1,6 +1,7 @@
 import { router } from "expo-router";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { useCartStore } from "../../store/cart-store";
+import { Product } from "../../components/Product/Product";
 
 export default function Cart() {
     const cart = useCartStore((state) => state.cart);
@@ -27,6 +28,13 @@ export default function Cart() {
             <Text style={styles.empty}>
                 Produtos no carrinho: {cart.length}
             </Text>
+
+            <FlatList
+                data={cart}
+                renderItem={({ item }) => (
+                    <Product product={item} />
+                )}
+            />
         </View>
     )
 }
