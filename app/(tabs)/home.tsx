@@ -5,10 +5,12 @@ import { categories } from '../../data/categories';
 import { Category } from '../../components/Category/Category';
 import { useState } from 'react';
 import { Banner } from '../../components/Banner/Banner';
+import { useCartStore } from '../../store/cart-store';
 
 
 const Home = () => {
     const [search, setSearch] = useState('');
+    const cart = useCartStore((state) => state.cart);
 
     const produtosFiltrados = products.filter((product) => (
         product.name.toLowerCase().includes(search.toLowerCase())
@@ -28,7 +30,7 @@ const Home = () => {
                     />
 
                     <View style={styles.badge}>
-                        <Text style={styles.badgeText}>2</Text>
+                        <Text style={styles.badgeText}>{cart.length}</Text>
                     </View>
                 </View>
 
