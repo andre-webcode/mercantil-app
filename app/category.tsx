@@ -17,6 +17,10 @@ const Category = () => {
         router.back();
     }
 
+    const handleCart = () => {
+        router.push('/cart');
+    }
+
     return (
         <View style={{ flex: 1 }}>
 
@@ -25,7 +29,9 @@ const Category = () => {
                     <Text style={styles.backText}>← Voltar</Text>
                 </Pressable>
 
-                <View style={styles.cart}>
+                <Pressable
+                onPress={handleCart}
+                 style={styles.cart}>
 
                     <ShoppingCart
                         size={28}
@@ -37,7 +43,7 @@ const Category = () => {
                             {cart.length}
                         </Text>
                     </View>
-                </View>
+                </Pressable>
 
             </View>
             <Text style={styles.title}>{category}</Text>
