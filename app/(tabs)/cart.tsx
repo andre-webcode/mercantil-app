@@ -1,13 +1,23 @@
 import { router } from "expo-router";
-import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { useCartStore } from "../../store/cart-store";
-import { Product } from "../../components/Product/Product";
+import { ProductType } from "../../types/product-type";
 
 export default function Cart() {
     const cart = useCartStore((state) => state.cart);
+    const decreaseCart = useCartStore((state) => state.decreaseCart);
+    const addToCart = useCartStore((state) => state.addToCart);
 
     const handleBack = () => {
         router.push('/home');
+    }
+
+    const handleIncrease = (product: ProductType) => {
+        addToCart(product);
+    };
+
+    const handleDecrease = (producId: number) => {
+        decreaseCart(producId);
     }
 
     return (
@@ -32,7 +42,48 @@ export default function Cart() {
             <FlatList
                 data={cart}
                 renderItem={({ item }) => (
-                    <Product product={item} />
+                    <View style={styles.item}>
+
+                        <View style={styles.productInfo}>
+                            <Image
+                                source={item.product.image}
+                                style={styles.image}
+                            />
+
+                            <View>
+                                <Text style={styles.name}>
+                                    {item.product.name}
+                                </Text>
+
+                                <Text style={styles.price}>
+                                    R$ {item.product.price.toFixed(2)}
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={styles.quantityContainer}>
+
+                            <Pressable
+                                style={styles.quantityButton}
+                                onPress={() => handleDecrease(item.product.id)}
+                            >
+                                <Text style={styles.quantityButtonText}>−</Text>
+                            </Pressable>
+
+                            <Text style={styles.quantity}>
+                                {item.quantity}
+                            </Text>
+
+                            <Pressable
+                                style={styles.quantityButton}
+                                onPress={() => handleIncrease(item.product)}
+                            >
+                                <Text style={styles.quantityButtonText}>+</Text>
+                            </Pressable>
+
+                        </View>
+
+                    </View>
+
                 )}
             />
         </View>
@@ -65,5 +116,59 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#2E7D32',
         fontWeight: 'bold',
-    }
+    },
+    item: {
+        backgroundColor: '#FFFFFF',
+        padding: 15,
+        marginBottom: 12,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#E8F5E9',
+    },
+    name: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#333333',
+    },
+    quantityContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 12,
+    },
+    quantityButton: {
+        width: 35,
+        height: 35,
+        borderRadius: 8,
+        backgroundColor: '#2E7D32',
+        alignItems: 'center',
+
+    },
+    quantityButtonText: {
+        color: '#FFFFFF',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    quantity: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginHorizontal: 15,
+        color: '#333333',
+    },
+    productInfo: {
+        flexDirection: 'row',
+        alignItems: 'center',
+      },
+      image: {
+        width: 70,
+        height: 70,
+        borderRadius: 8,
+        marginRight: 15,
+      },
+      price: {
+        marginTop: 5,
+        fontSize: 15,
+        color: '#2E7D32',
+        fontWeight: 'bold',
+      },
+
 });
