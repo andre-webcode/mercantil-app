@@ -20,6 +20,8 @@ export default function Cart() {
         decreaseCart(producId);
     }
 
+    const total = cart.reduce((acc, item) => acc + (item.product.price * item.quantity), 0)
+
     return (
         <View style={styles.container}>
 
@@ -58,34 +60,42 @@ export default function Cart() {
                                 <Text style={styles.price}>
                                     R$ {item.product.price.toFixed(2)}
                                 </Text>
+
+                                <Text style={styles.subtotal}>
+                                    Subtotal: R$ {(item.product.price * item.quantity).toFixed(2)}
+                                </Text>
+
                             </View>
-                        </View>
-                        <View style={styles.quantityContainer}>
+                            <View style={styles.quantityContainer}>
 
-                            <Pressable
-                                style={styles.quantityButton}
-                                onPress={() => handleDecrease(item.product.id)}
-                            >
-                                <Text style={styles.quantityButtonText}>−</Text>
-                            </Pressable>
+                                <Pressable
+                                    style={styles.quantityButton}
+                                    onPress={() => handleDecrease(item.product.id)}
+                                >
+                                    <Text style={styles.quantityButtonText}>−</Text>
+                                </Pressable>
 
-                            <Text style={styles.quantity}>
-                                {item.quantity}
-                            </Text>
+                                <Text style={styles.quantity}>
+                                    {item.quantity}
+                                </Text>
 
-                            <Pressable
-                                style={styles.quantityButton}
-                                onPress={() => handleIncrease(item.product)}
-                            >
-                                <Text style={styles.quantityButtonText}>+</Text>
-                            </Pressable>
-
+                                <Pressable
+                                    style={styles.quantityButton}
+                                    onPress={() => handleIncrease(item.product)}
+                                >
+                                    <Text style={styles.quantityButtonText}>+</Text>
+                                </Pressable>
+                            </View>
                         </View>
 
                     </View>
 
                 )}
             />
+
+            <Text style={styles.total}>
+                Total: R$ {total.toFixed(2)}
+            </Text>
         </View>
     )
 }
@@ -134,6 +144,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 12,
+
+
     },
     quantityButton: {
         width: 35,
@@ -157,18 +169,36 @@ const styles = StyleSheet.create({
     productInfo: {
         flexDirection: 'row',
         alignItems: 'center',
-      },
-      image: {
+        width: '100%',
+        justifyContent: 'space-between',
+
+
+    },
+    image: {
         width: 70,
         height: 70,
         borderRadius: 8,
         marginRight: 15,
-      },
-      price: {
+    },
+    price: {
         marginTop: 5,
         fontSize: 15,
         color: '#2E7D32',
         fontWeight: 'bold',
+    },
+    subtotal: {
+        marginTop: 4,
+        fontSize: 13,
+        fontWeight: 'bold',
+        color: '#2E7D32',
+    },
+    total: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: '#2E7D32',
+        marginTop: 10,
+        marginBottom: 20,
+        textAlign: 'right',
       },
 
 });
