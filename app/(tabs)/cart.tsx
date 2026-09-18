@@ -22,6 +22,11 @@ export default function Cart() {
 
     const total = cart.reduce((acc, item) => acc + (item.product.price * item.quantity), 0)
 
+
+    const handleCheckout = () => {
+        router.push('/checkout');
+    }
+
     return (
         <View style={styles.container}>
 
@@ -96,6 +101,15 @@ export default function Cart() {
             <Text style={styles.total}>
                 Total: R$ {total.toFixed(2)}
             </Text>
+
+            <Pressable
+                style={styles.checkoutButton}
+                onPress={handleCheckout}
+            >
+                <Text style={styles.checkoutButtonText}>
+                    Ir para checkout
+                </Text>
+            </Pressable>
         </View>
     )
 }
@@ -199,6 +213,19 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 20,
         textAlign: 'right',
-      },
+    },
+    checkoutButton:{
+        backgroundColor: '#2E7D32',
+        paddingVertical: 14,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 20,
+        marginBottom: 20,
+    },
+    checkoutButtonText:{
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontWeight: 'bold',
+    }
 
 });
