@@ -6,6 +6,7 @@ import { Category } from '../../components/Category/Category';
 import { useState } from 'react';
 import { Banner } from '../../components/Banner/Banner';
 import { useCartStore } from '../../store/cart-store';
+import { Product } from '../../components/Product/Product';
 
 
 const Home = () => {
@@ -14,8 +15,9 @@ const Home = () => {
 
     const produtosFiltrados = products.filter((product) => (
         product.name.toLowerCase().includes(search.toLowerCase())
-    ))
+    ));
 
+    const buscando = search.trim() !== '';
 
     return (
         <ScrollView style={styles.container}>
@@ -47,25 +49,45 @@ const Home = () => {
                     />
                 </View>
 
-                <Banner />
+                {!buscando && <Banner />}
 
-                <Text style={styles.categoriesTitle}>
-                    Categorias
-                </Text>
+                {buscando ? (
+                    produtosFiltrados.length === 0 ? (
+                        <Text style={styles.noResults}>
+                            Nenhum produto encontrado.
+                        </Text>
+                    ) : (
+                        <FlatList
+                            data={produtosFiltrados}
+                            keyExtractor={(item) => item.id.toString()}
+                            renderItem={({ item }) => (
+                                <Product product={item} />
+                            )}
+                            numColumns={2}
+                            scrollEnabled={false}
+                        />
+                    )
+                ) : (
+                    <>
+                        <Text style={styles.categoriesTitle}>
+                            Categorias
+                        </Text>
 
-                <FlatList
-                    data={categories}
-                    key="categories-2"
-                    keyExtractor={(item) => item.id.toString()}
-                    renderItem={({ item }) => (
-                        <Category category={item} />
-                    )}
-                    numColumns={2}
-                    contentContainerStyle={{
-                        paddingTop: 60,
-                    }}
-                    scrollEnabled={false}
-                />
+                        <FlatList
+                            data={categories}
+                            key="categories-2"
+                            keyExtractor={(item) => item.id.toString()}
+                            renderItem={({ item }) => (
+                                <Category category={item} />
+                            )}
+                            numColumns={2}
+                            contentContainerStyle={{
+                                paddingTop: 60,
+                            }}
+                            scrollEnabled={false}
+                        />
+                    </>
+                )}
 
             </View>
         </ScrollView>
@@ -114,7 +136,6 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         paddingHorizontal: 0,
 
-
     },
     searchContainer: {
         marginTop: 25,
@@ -153,6 +174,12 @@ const styles = StyleSheet.create({
         color: '#2E7D32',
         marginTop: 20,
         marginBottom: 15,
+    },
+    noResults:{
+        fontSize:20,
+        marginTop:20,
+        color: '#2E7D32',
+        textAlign:'center'
     }
 });
 
