@@ -7,6 +7,7 @@ export const products: ProductType[] = [
     price: 2.50,
     category: 'Bebidas',
     image: require('../assets/products/aguaCristal.jpg'),
+    description: 'Água para consumo diário.',
   },
 
   {
@@ -15,6 +16,7 @@ export const products: ProductType[] = [
     price: 2.00,
     category: 'Bebidas',
     image: require('../assets/products/aguaMi.jpg'),
+    description: 'Água mineral para consumo diário.',
   },
 
   {
@@ -23,6 +25,7 @@ export const products: ProductType[] = [
     price: 12.90,
     category: 'Higiene',
     image: require('../assets/products/antisseptico.jpg'),
+    description: 'Produto para auxiliar na higiene e limpeza.',
   },
 
   {
@@ -31,6 +34,7 @@ export const products: ProductType[] = [
     price: 25.90,
     category: 'Alimentos',
     image: require('../assets/products/arrozbranco.jpg'),
+    description: 'Arroz branco para preparar suas refeições.',
   },
 
   {
@@ -39,6 +43,7 @@ export const products: ProductType[] = [
     price: 4.50,
     category: 'Bebidas',
     image: require('../assets/products/cervejalata.jpg'),
+    description: 'Cerveja em lata para momentos de descontração.',
   },
 
   {
@@ -47,15 +52,8 @@ export const products: ProductType[] = [
     price: 8.50,
     category: 'Bebidas',
     image: require('../assets/products/cocacola.jpg'),
+    description: 'Refrigerante de sabor tradicional.',
   },
-
-  // {
-  //   id: 7,
-  //   name: 'Colgate',
-  //   price: 7.90,
-  //   category: 'Higiene',
-  //   image: require('../assets/products/colgate.jpg'),
-  // },
 
   {
     id: 8,
@@ -63,6 +61,7 @@ export const products: ProductType[] = [
     price: 8.50,
     category: 'Higiene',
     image: require('../assets/products/colgate1.jpg'),
+    description: 'Produto de higiene bucal para uso diário.',
   },
 
   {
@@ -71,6 +70,7 @@ export const products: ProductType[] = [
     price: 9.90,
     category: 'Higiene',
     image: require('../assets/products/colgate2.jpg'),
+    description: 'Produto de higiene bucal para uso diário.',
   },
 
   {
@@ -79,6 +79,7 @@ export const products: ProductType[] = [
     price: 10.90,
     category: 'Higiene',
     image: require('../assets/products/colgate3.jpg'),
+    description: 'Produto de higiene bucal para uso diário.',
   },
 
   {
@@ -87,6 +88,7 @@ export const products: ProductType[] = [
     price: 7.90,
     category: 'Bebidas',
     image: require('../assets/products/corona.jpg'),
+    description: 'Cerveja para momentos de descontração.',
   },
 
   {
@@ -95,6 +97,7 @@ export const products: ProductType[] = [
     price: 9.90,
     category: 'Higiene',
     image: require('../assets/products/escova-infatil.jpg'),
+    description: 'Escova dental indicada para o público infantil.',
   },
 
   {
@@ -103,6 +106,7 @@ export const products: ProductType[] = [
     price: 8.90,
     category: 'Higiene',
     image: require('../assets/products/escova1.jpg'),
+    description: 'Escova para higiene bucal diária.',
   },
 
   {
@@ -111,6 +115,7 @@ export const products: ProductType[] = [
     price: 11.90,
     category: 'Higiene',
     image: require('../assets/products/escova2.jpg'),
+    description: 'Escova para higiene bucal diária.',
   },
 
   {
@@ -119,6 +124,7 @@ export const products: ProductType[] = [
     price: 8.90,
     category: 'Alimentos',
     image: require('../assets/products/feijaocarioca.jpg'),
+    description: 'Feijão carioca para preparar suas refeições.',
   },
 
   {
@@ -127,6 +133,7 @@ export const products: ProductType[] = [
     price: 6.90,
     category: 'Bebidas',
     image: require('../assets/products/gatorade.jpg'),
+    description: 'Bebida para consumo durante atividades e momentos do dia.',
   },
 
   {
@@ -135,6 +142,7 @@ export const products: ProductType[] = [
     price: 6.90,
     category: 'Higiene',
     image: require('../assets/products/gremeColgate.jpg'),
+    description: 'Produto para auxiliar na higiene bucal.',
   },
 
   {
@@ -143,6 +151,7 @@ export const products: ProductType[] = [
     price: 6.50,
     category: 'Bebidas',
     image: require('../assets/products/ice.jpg'),
+    description: 'Bebida para momentos de descontração.',
   },
 
   {
@@ -151,6 +160,7 @@ export const products: ProductType[] = [
     price: 8.90,
     category: 'Limpeza',
     image: require('../assets/products/limpeza1.jpg'),
+    description: 'Produto para auxiliar na limpeza da casa.',
   },
 
   {
@@ -159,6 +169,7 @@ export const products: ProductType[] = [
     price: 18.90,
     category: 'Higiene',
     image: require('../assets/products/listerine.jpg'),
+    description: 'Produto para auxiliar na higiene bucal.',
   },
 
   {
@@ -167,6 +178,7 @@ export const products: ProductType[] = [
     price: 9.90,
     category: 'Limpeza',
     image: require('../assets/products/multiuso.jpg'),
+    description: 'Produto multiuso para limpeza doméstica.',
   },
 
   {
@@ -175,6 +187,7 @@ export const products: ProductType[] = [
     price: 10.90,
     category: 'Limpeza',
     image: require('../assets/products/multiuso1.jpg'),
+    description: 'Produto multiuso para limpeza doméstica.',
   },
 
   {
@@ -183,6 +196,7 @@ export const products: ProductType[] = [
     price: 12.90,
     category: 'Higiene',
     image: require('../assets/products/oralb.jpg'),
+    description: 'Produto para auxiliar nos cuidados com a higiene bucal.',
   },
 
   {
@@ -191,6 +205,7 @@ export const products: ProductType[] = [
     price: 7.90,
     category: 'Limpeza',
     image: require('../assets/products/pinho.jpg'),
+    description: 'Produto para auxiliar na limpeza doméstica.',
   },
 
   {
@@ -199,6 +214,7 @@ export const products: ProductType[] = [
     price: 7.90,
     category: 'Bebidas',
     image: require('../assets/products/refrigerante.jpg'),
+    description: 'Refrigerante para acompanhar suas refeições.',
   },
 
   {
@@ -207,6 +223,7 @@ export const products: ProductType[] = [
     price: 8.90,
     category: 'Limpeza',
     image: require('../assets/products/veja2.jpg'),
+    description: 'Produto para auxiliar na limpeza doméstica.',
   },
 
   {
@@ -215,6 +232,7 @@ export const products: ProductType[] = [
     price: 9.90,
     category: 'Limpeza',
     image: require('../assets/products/veja2.jpg'),
+    description: 'Produto para auxiliar na limpeza doméstica.',
   },
 
   {
@@ -223,6 +241,7 @@ export const products: ProductType[] = [
     price: 10.90,
     category: 'Limpeza',
     image: require('../assets/products/veja3.jpg'),
+    description: 'Produto para auxiliar na limpeza doméstica.',
   },
 
   {
@@ -231,5 +250,6 @@ export const products: ProductType[] = [
     price: 5.90,
     category: 'Limpeza',
     image: require('../assets/products/ype.jpg'),
+    description: 'Produto para auxiliar na limpeza doméstica.',
   },
 ];
