@@ -30,10 +30,13 @@ export default function ProductDetails() {
             </Pressable>
 
 
-            <Image
-                source={product?.image}
-                style={styles.image}
-            />
+            <View style={styles.imageContainer}>
+                <Image
+                    source={product?.image}
+                    style={styles.image}
+                />
+            </View>
+
             <Text style={styles.name}>{product?.name}</Text>
             <Text style={styles.price}>
                 R$ {product?.price.toFixed(2)}
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
         height: 160,
         alignSelf: 'center',
         marginTop: 30,
-        
+
     },
     name: {
         fontSize: 24,
@@ -107,10 +110,16 @@ const styles = StyleSheet.create({
     },
     backButton: {
         marginBottom: 15,
-      },
-      backText: {
+    },
+    backText: {
         fontSize: 16,
         color: '#2E7D32',
         fontWeight: 'bold',
-      },
+    },
+    imageContainer:{
+        width: '100%',
+        alignItems: 'center',
+        marginTop: 10,
+        marginBottom: 20,
+    }
 });

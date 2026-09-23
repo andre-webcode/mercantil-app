@@ -2,12 +2,18 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { ProductType } from '../../types/product-type';
 import { useCartStore } from "../../store/cart-store";
 import { useState } from "react";
+import { router } from "expo-router";
 
 type ProductProps = {
     product: ProductType;
 };
 export const Product = ({ product }: ProductProps) => {
     const [adicionado, setAdicionado] = useState(false);
+
+    const handleProductPress = () => {
+        router.push(`/product?id=${product.id}&category=${product.category}`);
+
+      };
 
     const addToCart = useCartStore((state) => state.addToCart);
 
@@ -21,7 +27,7 @@ export const Product = ({ product }: ProductProps) => {
     }
 
     return (
-        <View style={styles.container}>
+        <Pressable onPress={handleProductPress} style={styles.container}>
 
             <View style={styles.imageContainer}>
                 <Image
@@ -42,7 +48,7 @@ export const Product = ({ product }: ProductProps) => {
                     {adicionado ? '✓ Adicionado' : 'Adicionar'}
                 </Text>
             </Pressable>
-        </View>
+        </Pressable>
     )
 }
 

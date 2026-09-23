@@ -3,57 +3,62 @@ import { ProductType } from "../types/product-type";
 import { CartItem } from "../types/cart-type";
 
 type CartState = {
-    cart: CartItem[];
-    addToCart: (product: ProductType) => void;
-    decreaseCart: (productId: number) => void;
+  cart: CartItem[];
+  addToCart: (product: ProductType) => void;
+  decreaseCart: (productId: number) => void;
+  clearCart: () => void;
 }
 export const useCartStore = create<CartState>((set) => ({
-    cart: [],
+  cart: [],
 
-    addToCart: (product) => {
+  addToCart: (product) => {
 
-        set((state) => {
+    set((state) => {
 
-            const index = state.cart.findIndex(
-                (item) => item.product.id === product.id
-            );
+      const index = state.cart.findIndex(
+        (item) => item.product.id === product.id
+      );
 
-            if (index !== -1) {
-                const cart = [...state.cart];
+      if (index !== -1) {
+        const cart = [...state.cart];
 
-                cart[index].quantity += 1;
+        cart[index].quantity += 1;
 
-                return { cart };
-            }
+        return { cart };
+      }
 
-            return {
+      return {
 
-                cart: [...state.cart,
-                {
-                    product,
-                    quantity: 1
-                },
-                ],
-            }
-        })
-    },
+        cart: [...state.cart,
+        {
+          product,
+          quantity: 1
+        },
+        ],
+      }
+    })
+  },
 
-    decreaseCart: (productId) => {
-        set((state) => {
-          const cart = state.cart.map((item) => {
-              if (item.product.id === productId) {
-                return {
-                  ...item,
-                  quantity: item.quantity - 1,
-                };
-              }
-      
-              return item;
-            })
-            .filter((item) => item.quantity > 0);
-      
-          return { cart };
-        });
-      },
+  decreaseCart: (productId) => {
+    set((state) => {
+      const cart = state.cart.map((item) => {
+        if (item.product.id === productId) {
+          return {
+            ...item,
+            quantity: item.quantity - 1,
+          };
+        }
+
+        return item;
+      })
+        .filter((item) => item.quantity > 0);
+
+      return { cart };
+    });
+  },
+
+  clearCart: () => {
+    set({ cart: [] });
+  }
 
 }));
