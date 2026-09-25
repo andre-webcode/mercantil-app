@@ -1,13 +1,21 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { ProductType } from '../../types/product-type';
 import { useCartStore } from "../../store/cart-store";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { router } from "expo-router";
+import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
 
 type ProductProps = {
     product: ProductType;
 };
 export const Product = ({ product }: ProductProps) => {
+    const opacity = useSharedValue(0);
+    const translateY = useSharedValue(15);
+    const AnimatedCardPressable = Animated.createAnimatedComponent(Pressable);
+    const AnimatedButtonPressable = Animated.createAnimatedComponent(Pressable);
+
+    const scale = useSharedValue(1);
+
     const [adicionado, setAdicionado] = useState(false);
 
     const handleProductPress = () => {
@@ -19,15 +27,41 @@ export const Product = ({ product }: ProductProps) => {
 
     const handleAddToCart = () => {
         addToCart(product);
+
+        scale.value = withSpring(0.95);
+
         setAdicionado(true);
 
         setTimeout(() => {
             setAdicionado(false);
+            scale.value = withSpring(1);
         }, 2000);
-    }
+    };
+
+    useEffect(() => {
+        opacity.value = withTiming(1, {
+            duration: 500,
+        });
+
+        translateY.value = withTiming(0, {
+            duration: 500,
+        });
+    }, []);
+
+    const animatedButtonStyle = useAnimatedStyle(() => ({
+        transform: [{ scale: scale.value, },]
+    }));
+
+    const animatedCardStyle = useAnimatedStyle(() => ({
+        opacity: opacity.value,
+        transform: [{ translateY: translateY.value }],
+    }));
 
     return (
-        <Pressable onPress={handleProductPress} style={styles.container}>
+
+        <AnimatedCardPressable onPress={handleProductPress} style={[styles.container, {
+           animatedCardStyle
+        },]}>
 
             <View style={styles.imageContainer}>
                 <Image
@@ -40,15 +74,17 @@ export const Product = ({ product }: ProductProps) => {
             <Text style={styles.price}>R$ {product.price}</Text>
             <Text style={styles.category}>{product.category}</Text>
 
-            <Pressable
+            <AnimatedButtonPressable
                 onPress={handleAddToCart}
                 style={[styles.button, adicionado && styles.buttonAdded]}
             >
                 <Text style={styles.buttonText}>
                     {adicionado ? '✓ Adicionado' : 'Adicionar'}
                 </Text>
-            </Pressable>
-        </Pressable>
+            </AnimatedButtonPressable>
+
+        </AnimatedCardPressable>
+
     )
 }
 
