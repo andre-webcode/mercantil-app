@@ -38,21 +38,34 @@ export const Category = ({ category }: CategoryProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    maxWidth: 220,
     alignItems: 'center',
-    marginBottom: 20,
-    paddingHorizontal: 5,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    marginBottom: 12,
+    margin: 6,
+    padding: 12,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+  
+    elevation: 3,
   },
 
   image: {
     width: 120,
-    height: 100,
-    borderRadius: 10,
+    height: 120,
+    borderRadius: 16,
   },
 
   name: {
     marginTop: 8,
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#2E7D32',
+    color: '#0B6645',
   },
 });

@@ -32,23 +32,25 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#FAF6EE',
       
     },
     logo: {
-        width: 200,
-        height: 200,
-        marginTop: 10,
-    },
-    welcome: {
-        fontSize: 22,
-        marginTop: 60,
-        color: '#1565C0',
+        width: 220,
+        height: 220,
+        marginTop: 40,
       },
-    description: {
+      welcome: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        marginTop: 30,
+        color: '#0B6645',
+      },
+      description: {
         fontSize: 16,
         textAlign: 'center',
-        marginTop: 10,
-        color: '#555555',
+        marginTop: 12,
+        color: '#666666',
+        lineHeight: 24,
       },
 })

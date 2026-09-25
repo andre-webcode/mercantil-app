@@ -37,7 +37,7 @@ const Home = () => {
                 <View style={styles.searchContainer}>
                     <Search
                         size={20}
-                        color="#2E7D32"
+                        color="#0B6645"
                     />
 
                     <TextInput
@@ -81,8 +81,11 @@ const Home = () => {
                                 <Category category={item} />
                             )}
                             numColumns={2}
+                            columnWrapperStyle={{
+                                justifyContent: 'center',
+                              }}
                             contentContainerStyle={{
-                                paddingTop: 60,
+                                paddingTop: 10,
                             }}
                             scrollEnabled={false}
                         />
@@ -98,7 +101,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#FAF6EE',
     },
     header: {
         flexDirection: 'row',
@@ -106,25 +109,26 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 15,
         borderBottomWidth: 1,
-        borderBottomColor: '#E8F5E9',
+        borderBottomColor: '#E5EDE8',
     },
 
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color: '#0B6645',
     },
 
     welcome: {
         fontSize: 22,
         marginTop: 40,
         fontWeight: 'bold',
+        color: '#0B6645',
     },
 
     description: {
         fontSize: 16,
         marginTop: 8,
-        color: '#555555',
+        color: '#666666',
     },
     content: {
         width: '100%',
@@ -141,11 +145,12 @@ const styles = StyleSheet.create({
         marginTop: 25,
         height: 50,
         borderWidth: 1,
-        borderColor: '#2E7D32',
-        borderRadius: 10,
+        borderColor: '#D8E5DE',
+        borderRadius: 26,
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 15,
+        paddingHorizontal: 18,
+        backgroundColor: '#FFFFFF',
 
     },
     cart: {
@@ -171,14 +176,14 @@ const styles = StyleSheet.create({
     categoriesTitle: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color:  '#0B6645',
         marginTop: 20,
         marginBottom: 15,
     },
     noResults:{
         fontSize:20,
         marginTop:20,
-        color: '#2E7D32',
+        color:'#0B6645',
         textAlign:'center'
     }
 });

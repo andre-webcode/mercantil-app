@@ -13,7 +13,7 @@ export const Button = ({ onPress }: Props) => {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#2E7D27',
+        backgroundColor: '#10B981',
         paddingVertical: 14,
         paddingHorizontal: 40,
         borderRadius: 8,

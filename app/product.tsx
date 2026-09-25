@@ -59,7 +59,7 @@ export default function ProductDetails() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F8FFF8',
+        backgroundColor:  '#FAF6EE',
         padding: 15,
     },
     image: {
@@ -72,14 +72,14 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#333333',
+        color: '#0B6645',
         textAlign: 'center',
         marginTop: 20,
     },
     price: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color: '#0B6645',
         textAlign: 'center',
         marginTop: 10,
     },
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     button: {
-        backgroundColor: '#2E7D32',
+        backgroundColor:  '#10B981',
         paddingVertical: 14,
         borderRadius: 8,
         alignItems: 'center',
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     },
     backText: {
         fontSize: 16,
-        color: '#2E7D32',
+        color: '#0B6645',
         fontWeight: 'bold',
     },
     imageContainer:{

@@ -118,13 +118,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#FAF6EE',
     },
 
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color: '#0B6645',
     },
 
     empty: {
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: 16,
-        color: '#2E7D32',
+        color: '#0B6645',
         fontWeight: 'bold',
     },
     item: {
@@ -147,7 +147,16 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#E8F5E9',
+        borderColor: '#E5EDE8',
+        shadowColor: '#000000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.06,
+        shadowRadius: 8,
+
+        elevation: 3,
     },
     name: {
         fontSize: 16,
@@ -165,7 +174,7 @@ const styles = StyleSheet.create({
         width: 35,
         height: 35,
         borderRadius: 8,
-        backgroundColor: '#2E7D32',
+        backgroundColor:  '#10B981',
         alignItems: 'center',
 
     },
@@ -197,32 +206,32 @@ const styles = StyleSheet.create({
     price: {
         marginTop: 5,
         fontSize: 15,
-        color: '#2E7D32',
+        color:  '#0B6645',
         fontWeight: 'bold',
     },
     subtotal: {
         marginTop: 4,
         fontSize: 13,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color:  '#0B6645',
     },
     total: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color:  '#0B6645',
         marginTop: 10,
         marginBottom: 20,
         textAlign: 'right',
     },
-    checkoutButton:{
-        backgroundColor: '#2E7D32',
+    checkoutButton: {
+        backgroundColor:  '#10B981',
         paddingVertical: 14,
         borderRadius: 8,
         alignItems: 'center',
         marginTop: 20,
         marginBottom: 20,
     },
-    checkoutButtonText:{
+    checkoutButtonText: {
         color: '#FFFFFF',
         fontSize: 16,
         fontWeight: 'bold',

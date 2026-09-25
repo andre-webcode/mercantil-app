@@ -1,6 +1,6 @@
 
 import { useEffect, useRef, useState } from 'react';
-import { FlatList, ImageBackground, StyleSheet, Text } from 'react-native';
+import { FlatList, ImageBackground, StyleSheet, Text} from 'react-native';
 
 const banners = [
     {
@@ -50,15 +50,19 @@ export const Banner = () => {
             pagingEnabled
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => (
+
                 <ImageBackground
                     source={item.image}
                     style={styles.container}
                     imageStyle={styles.image}
                 >
-                    <Text style={styles.title}>
-                        {item.title}
-                    </Text>
-                </ImageBackground>
+                  
+                        <Text style={styles.title}>
+                            {item.title}
+                        </Text>
+                  
+                </ImageBackground >
+
             )}
         />
     );
@@ -66,12 +70,22 @@ export const Banner = () => {
 
 const styles = StyleSheet.create({
     container: {
-        height: 120,
+        height: 160,
         width: 320,
         justifyContent: 'center',
         marginTop: 20,
+        marginBottom: 20,
         paddingHorizontal: 20,
         marginHorizontal: 10,
+        shadowColor: '#000000',
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+        shadowOpacity: 0.10,
+        shadowRadius: 8,
+      
+        elevation: 3,
     },
 
     image: {
@@ -80,8 +94,15 @@ const styles = StyleSheet.create({
 
     title: {
         color: '#FFFFFF',
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: 'bold',
+        textShadowColor: 'rgba(0, 0, 0, 0.35)',
+        textShadowOffset: {
+            width: 0,
+            height: 1,
+          },
+          textShadowRadius: 4,
     },
+    
 });
 

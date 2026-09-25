@@ -35,7 +35,7 @@ const Category = () => {
 
                     <ShoppingCart
                         size={28}
-                        color="#2E7D32"
+                        color="#0B6645"
                     />
 
                     <View style={styles.badge}>
@@ -68,13 +68,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 15,
         borderBottomWidth: 1,
-        borderBottomColor: '#E8F5E9',
+        borderBottomColor: '#E5EDE8',
     },
 
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color:  '#0B6645',
         marginTop: 10,
         marginBottom: 20,
         textAlign: 'center',
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
 
     backText: {
         fontSize: 16,
-        color: '#2E7D32',
+        color:  '#0B6645',
         fontWeight: 'bold',
     },
 

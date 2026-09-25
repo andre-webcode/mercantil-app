@@ -13,7 +13,7 @@ export const Product = ({ product }: ProductProps) => {
     const handleProductPress = () => {
         router.push(`/product?id=${product.id}&category=${product.category}`);
 
-      };
+    };
 
     const addToCart = useCartStore((state) => state.addToCart);
 
@@ -55,25 +55,31 @@ export const Product = ({ product }: ProductProps) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 10,
+        padding: 12,
         backgroundColor: '#ffffff',
-        borderWidth: 1,
-        borderColor: '#E8F5E9',
-        borderRadius: 10,
-        marginBottom: 10,
+        borderRadius: 24,
+        marginBottom: 12,
         marginTop: 20,
-        margin: 5
+        margin: 6,
+        shadowColor: '#000000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.08,
+        shadowRadius: 8,
+        elevation: 3,
     },
     name: {
         fontSize: 17,
         fontWeight: 'bold',
-        color: '#222222',
+        color: '#0B6645',
         marginTop: 5
     },
     price: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#2e7d32',
+        color: '#0B6645',
         marginTop: 6,
     },
     category: {
@@ -82,18 +88,18 @@ const styles = StyleSheet.create({
         marginTop: 3,
     },
     imageContainer: {
-        backgroundColor: '#F5F5F5',
+        backgroundColor: '#FAF6EE',
         width: '100%',
         height: 130,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 8,
-        marginBottom: 10,
+        borderRadius: 18,
+        marginBottom: 12,
     },
     button: {
-        backgroundColor: '#2E7D32',
+        backgroundColor: '#10B981',
         paddingVertical: 10,
-        borderRadius: 8,
+        borderRadius: 20,
         marginTop: 12,
         alignItems: 'center',
     },
@@ -108,6 +114,6 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     buttonAdded: {
-        backgroundColor: '#66bb6a'
+        backgroundColor: '#0B6645'
     }
 })

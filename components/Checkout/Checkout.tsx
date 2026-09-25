@@ -111,13 +111,13 @@ export const Checkout = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#FAF6EE',
         padding: 20,
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color: '#0B6645',
         marginTop: 10,
         marginBottom: 20,
         textAlign: 'center',
@@ -126,10 +126,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         padding: 15,
         marginBottom: 12,
-        borderRadius: 10,
+        borderRadius: 20,
         borderWidth: 1,
-        borderColor: '#E8F5E9',
-    },
+        borderColor: '#E5EDE8',
+      
+        shadowColor: '#000000',
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+        shadowOpacity: 0.06,
+        shadowRadius: 8,
+      
+        elevation: 3,
+      },
     name: {
         fontSize: 18,
         fontWeight: 'bold',
@@ -138,7 +148,7 @@ const styles = StyleSheet.create({
     },
     price: {
         fontSize: 15,
-        color: '#2E7D32',
+        color: '#0B6645',
         fontWeight: 'bold',
         marginBottom: 5,
     },
@@ -150,26 +160,26 @@ const styles = StyleSheet.create({
     subtotal: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color: '#0B6645',
     },
     backButton: {
         marginBottom: 15,
     },
     backText: {
         fontSize: 16,
-        color: '#2E7D32',
+        color: '#0B6645',
         fontWeight: 'bold',
     },
     total: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color: '#0B6645',
         marginTop: 10,
         marginBottom: 20,
         textAlign: 'right',
     },
     button: {
-        backgroundColor: '#2E7D32',
+        backgroundColor: '#10B981',
         paddingVertical: 14,
         borderRadius: 8,
         alignItems: 'center',
@@ -188,14 +198,14 @@ const styles = StyleSheet.create({
     },
     successTitle: {
         fontSize: 60,
-        color: '#2E7D32',
+        color: '#0B6645',
         fontWeight: 'bold',
         marginBottom: 20,
     },
     successMessage: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#2E7D32',
+        color: '#0B6645',
         textAlign: 'center',
         marginBottom: 15,
     },
