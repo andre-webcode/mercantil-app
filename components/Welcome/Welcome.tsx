@@ -1,45 +1,69 @@
-import { Image, StyleSheet, Text, View, Animated } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { Button } from "../Button/Button";
 import { router } from "expo-router";
 import { useEffect, useRef } from "react";
+import Animated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from "react-native-reanimated";
 
 export const Welcome = () => {
-    const logoOpacity = useRef(new Animated.Value(0)).current;
-    const titleOpacity = useRef(new Animated.Value(0)).current;
+    const logoOpacity = useSharedValue(0);
+    const titleOpacity = useSharedValue(0);
+    const descriptionOpacity = useSharedValue(0);
 
     const handleStart = () => {
         router.replace('/home');
     }
 
     useEffect(() => {
-        Animated.timing(logoOpacity, {
-            toValue: 1,
+        logoOpacity.value = withTiming(1, {
             duration: 800,
-            useNativeDriver: true,
-        }).start();
+        });
 
-        Animated.timing(titleOpacity, {
-            toValue: 1,
-            duration: 600,
-            delay: 300,
-            useNativeDriver: true,
-          }).start();
+        titleOpacity.value = withDelay(
+            300,
+            withTiming(1, {
+                duration: 600,
+            })
+        );
+
+        descriptionOpacity.value = withDelay(
+            500,
+            withTiming(1, {
+                duration: 600,
+            })
+        );
+
     }, []);
 
+    const animatedLogoStyle = useAnimatedStyle(() => ({
+        opacity: logoOpacity.value,
+    }));
+
+    const animatedTitleStyle = useAnimatedStyle(() => ({
+        opacity: titleOpacity.value,
+    }));
+
+    const animatedDescriptionStyle = useAnimatedStyle(() => ({
+        opacity: descriptionOpacity.value,
+    }));
 
     return (
         <View style={styles.container}>
-            <Animated.Image source={require('../../assets/logo.png')}
-                style={[styles.logo, { opacity: logoOpacity }]}
+            <Animated.Image
+                source={require('../../assets/logo.png')}
+                style={[styles.logo, animatedLogoStyle]}
             />
 
-            <Text style={[styles.welcome,{opacity:titleOpacity,}]}>
+            <Animated.Text
+                style={[styles.welcome, animatedTitleStyle]}
+            >
                 Bem-vindo! 👋
-            </Text>
-            <Text style={styles.description}>
-                Tudo que você precisa
+            </Animated.Text>
 
-            </Text>
+            <Animated.Text
+                style={[styles.description, animatedDescriptionStyle]}
+            >
+                Tudo o que você precisa{'\n'}
+            </Animated.Text>
 
             <Button
                 onPress={handleStart}
