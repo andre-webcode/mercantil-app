@@ -2,11 +2,14 @@ import { router } from "expo-router";
 import { FlatList, Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { useCartStore } from "../../store/cart-store";
 import { ProductType } from "../../types/product-type";
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 
 export default function Cart() {
     const cart = useCartStore((state) => state.cart);
     const decreaseCart = useCartStore((state) => state.decreaseCart);
     const addToCart = useCartStore((state) => state.addToCart);
+
+    const scale = useSharedValue(1);
 
     const handleBack = () => {
         router.push('/home');
@@ -14,10 +17,22 @@ export default function Cart() {
 
     const handleIncrease = (product: ProductType) => {
         addToCart(product);
+
+        scale.value = withSpring(1.15);
+
+        setTimeout(() => {
+            scale.value = withSpring(1);
+        }, 150);
     };
 
     const handleDecrease = (producId: number) => {
         decreaseCart(producId);
+
+        scale.value = withSpring(1.15);
+
+        setTimeout(() => {
+          scale.value = withSpring(1);
+        }, 150);
     }
 
     const total = cart.reduce((acc, item) => acc + (item.product.price * item.quantity), 0)
@@ -26,6 +41,10 @@ export default function Cart() {
     const handleCheckout = () => {
         router.push('/checkout');
     }
+
+    const animatedQuantityStyle = useAnimatedStyle(() => ({
+        transform: [{ scale: scale.value }],
+    }));
 
     return (
         <View style={styles.container}>
@@ -80,9 +99,9 @@ export default function Cart() {
                                     <Text style={styles.quantityButtonText}>−</Text>
                                 </Pressable>
 
-                                <Text style={styles.quantity}>
+                                <Animated.Text style={[styles.quantity, animatedQuantityStyle]}>
                                     {item.quantity}
-                                </Text>
+                                </Animated.Text>
 
                                 <Pressable
                                     style={styles.quantityButton}
@@ -174,7 +193,7 @@ const styles = StyleSheet.create({
         width: 35,
         height: 35,
         borderRadius: 8,
-        backgroundColor:  '#10B981',
+        backgroundColor: '#10B981',
         alignItems: 'center',
 
     },
@@ -206,25 +225,25 @@ const styles = StyleSheet.create({
     price: {
         marginTop: 5,
         fontSize: 15,
-        color:  '#0B6645',
+        color: '#0B6645',
         fontWeight: 'bold',
     },
     subtotal: {
         marginTop: 4,
         fontSize: 13,
         fontWeight: 'bold',
-        color:  '#0B6645',
+        color: '#0B6645',
     },
     total: {
         fontSize: 22,
         fontWeight: 'bold',
-        color:  '#0B6645',
+        color: '#0B6645',
         marginTop: 10,
         marginBottom: 20,
         textAlign: 'right',
     },
     checkoutButton: {
-        backgroundColor:  '#10B981',
+        backgroundColor: '#10B981',
         paddingVertical: 14,
         borderRadius: 8,
         alignItems: 'center',

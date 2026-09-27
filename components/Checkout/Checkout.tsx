@@ -1,12 +1,17 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native"
 import { useCartStore } from "../../store/cart-store"
 import { router } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
 
 export const Checkout = () => {
     const cart = useCartStore((state) => state.cart);
     const clearCart = useCartStore((state) => state.clearCart);
     const [finalizado, setFinalizado] = useState(false);
+
+    const successScale = useSharedValue(0);
+    const successOpacity = useSharedValue(0);
+    const successMessageOpacity = useSharedValue(0);
 
     const total = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
 
@@ -21,19 +26,41 @@ export const Checkout = () => {
 
     const handleGoHome = () => {
         router.replace('/home');
-    }
+    };
+
+    useEffect(() => {
+        if (finalizado) {
+          successScale.value = withSpring(1);
+          successOpacity.value = withTiming(1, {
+            duration: 500,
+          });
+
+          successMessageOpacity.value = withTiming(1, {
+            duration: 600,
+          });
+        }
+      }, [finalizado]);
+
+      const animatedSuccessStyle = useAnimatedStyle(() => ({
+        opacity: successOpacity.value,
+        transform: [{ scale: successScale.value }],
+      }));
+
+      const animatedSuccessMessageStyle = useAnimatedStyle(() => ({
+        opacity: successMessageOpacity.value,
+      }));
 
     return (
         <View style={styles.container}>
             {finalizado ? (
                 <View style={styles.successContainer}>
-                    <Text style={styles.successTitle}>
+                    <Animated.Text style={[styles.successTitle, animatedSuccessStyle]}>
                         ✓
-                    </Text>
+                    </Animated.Text>
 
-                    <Text style={styles.successMessage}>
+                    <Animated.Text style={[styles.successMessage, animatedSuccessMessageStyle]}>
                         Compra realizada com sucesso!
-                    </Text>
+                    </Animated.Text>
 
                     <Text style={styles.successDescription}>
                         Obrigado pela sua compra.
@@ -129,17 +156,17 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderWidth: 1,
         borderColor: '#E5EDE8',
-      
+
         shadowColor: '#000000',
         shadowOffset: {
-          width: 0,
-          height: 3,
+            width: 0,
+            height: 3,
         },
         shadowOpacity: 0.06,
         shadowRadius: 8,
-      
+
         elevation: 3,
-      },
+    },
     name: {
         fontSize: 18,
         fontWeight: 'bold',
@@ -217,7 +244,7 @@ const styles = StyleSheet.create({
     },
     homeButton: {
         paddingHorizontal: 30,
-      },
+    },
 
 
 
